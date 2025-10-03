@@ -149,7 +149,7 @@ static void solve(const GridS* const grid, const int numMoves)
   }
 
   // Cache for memoization, stores best coverage seen at (row,col,movesLeft)
-  int* cacheMap = malloc(grid->rows * grid->cols * numMoves * sizeof(int));
+  int* cacheMap = calloc(grid->rows * grid->cols * numMoves, sizeof(int));
   if (!cacheMap)
   {
     perror("Failed: malloc cacheMap");
