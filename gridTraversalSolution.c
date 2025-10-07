@@ -52,17 +52,21 @@ static void findPath(const GridS* const grid,
 static void freeGrid(GridS* grid);
 static void printResult(const PathS* const bestPath);
 
-static inline bool isCellValid(const GridS* const grid, int row, int col)
+static inline bool isCellValid(const GridS* const grid, const int row, const int col)
 {
   return row >= 0 && row < grid->rows && col >= 0 && col < grid->cols && !grid->cells[row][col];
 }
 
-static inline int getCellIdx(const GridS* const grid, int row, int col)
+static inline int getCellIdx(const GridS* const grid, const int row, const int col)
 {
   return row * grid->cols + col;
 }
 
-static inline int getCacheMapIdx(const GridS* const grid, int row, int col, int numMoves, int move)
+static inline int getCacheMapIdx(const GridS* const grid,
+                                 const int row,
+                                 const int col,
+                                 const int numMoves,
+                                 const int move)
 {
   return (row * grid->cols + col) * numMoves + move;
 }
