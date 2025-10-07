@@ -29,7 +29,7 @@ typedef struct PathS
   CoordS* path;
 }PathS;
 
-CoordS dirs[4] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+CoordS dirs[NUM_OF_DIRS] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
 
 /***************************** * Local function declarations * ***********************************/
 
