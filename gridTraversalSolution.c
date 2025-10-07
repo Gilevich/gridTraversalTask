@@ -34,23 +34,23 @@ CoordS dirs[4] = {{1,0}, {-1,0}, {0,1}, {0,-1}};
 /***************************** * Local function declarations * ***********************************/
 
 static GridS* createGrid(const int rows,
-                  const int cols,
-                  const CoordS* blockedCells,
-                  const int numBlockedCells);
-static void printGrid(const GridS* const grid, int rows, int cols);
+                         const int cols,
+                         const CoordS* const blockedCells,
+                         const int numBlockedCells);
+static void printGrid(const GridS* const grid, const int rows, const int cols);
 static void solve(const GridS* const grid, const int numMoves);
 static void findPath(const GridS* const grid,
-              int* cacheMap,
-              int row,
-              int col,
-              int numMoves,
-              int movesLeft,
-              PathS* curPath,
-              PathS* bestPath,
-              int* visitedCells,
-              int visitId);
+                     int* cacheMap,
+                     const int row,
+                     const int col,
+                     const int numMoves,
+                     const int movesLeft,
+                     PathS* curPath,
+                     PathS* bestPath,
+                     int* visitedCells,
+                     const int visitId);
 static void freeGrid(GridS* grid);
-static void printResult(const PathS* bestPath);
+static void printResult(const PathS* const bestPath);
 
 static inline bool isCellValid(const GridS* const grid, int row, int col)
 {
@@ -86,7 +86,7 @@ int main()
 
 static GridS* createGrid(const int rows,
                          const int cols,
-                         const CoordS* blockedCells,
+                         const CoordS* const blockedCells,
                          const int numBlockedCells)
 {
   GridS* grid = (GridS*)malloc(sizeof(GridS));
@@ -216,14 +216,14 @@ static void solve(const GridS* const grid, const int numMoves)
 // Recursive DFS with memoization to explore all paths
 static void findPath(const GridS* const grid,
                      int* cacheMap,
-                     int row,
-                     int col,
-                     int numMoves,
-                     int movesLeft,
+                     const int row,
+                     const int col,
+                     const int numMoves,
+                     const int movesLeft,
                      PathS* curPath,
                      PathS* bestPath,
                      int* visitedCells,
-                     int visitId)
+                     const int visitId)
 {
   // Memoization check: skip if no improvement possible
   int cachMapIdx = getCacheMapIdx(grid, row, col, numMoves, movesLeft);
@@ -280,7 +280,7 @@ static void freeGrid(GridS* grid)
   free(grid);
 }
 
-static void printResult(const PathS* bestPath)
+static void printResult(const PathS* const bestPath)
 {
   printf("Best coverage: %d\n", bestPath->cover);
   printf("Path length: %d\n", bestPath->len);
